@@ -1,0 +1,287 @@
+/**
+ * Centralized Theme Token System
+ * 
+ * All design tokens (colors, spacing, typography, shadows, etc.) are defined here.
+ * Supports multiple color palettes via CSS custom properties.
+ * Supports light and dark modes.
+ * 
+ * To add a new palette:
+ * 1. Add a new set of CSS variables in a new :root[data-theme="palette-name"] rule
+ * 2. Update AVAILABLE_THEMES constant in lib/theme.ts
+ * 3. No component rewrites needed - they consume semantic tokens
+ */
+
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+/** 
+ * BASE THEME - Light Mode (Default)
+ * Sourced from TweakCN: https://tweakcn.com/r/themes/cmho4nr9l000h04l1gu419ckw
+ * Converted from OKLCH to HSL for Tailwind compatibility
+ */
+:root {
+  --background: 0 0% 100%;
+  --foreground: 30 3% 8%;
+  --card: 0 0% 99.5%;
+  --card-foreground: 30 3% 8%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 30 3% 8%;
+  --primary: 30 3% 12.8%;
+  --primary-foreground: 60 2% 98.5%;
+  --secondary: 30 3% 87%;
+  --secondary-foreground: 30 3% 8%;
+  --muted: 0 0% 95%;
+  --muted-foreground: 30 3% 33.6%;
+  --accent: 0 0% 95%;
+  --accent-foreground: 30 3% 12.8%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 0 0% 95%;
+  --input: 0 0% 97%;
+  --ring: 30 3% 44.8%;
+  
+  /* Typography */
+  --font-sans: 'DM Sans', ui-sans-serif, sans-serif, system-ui;
+  --font-mono: 'Geist Mono', ui-monospace, monospace;
+  --font-serif: ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
+  
+  /* Spacing and Radii */
+  --radius: 1rem;
+  --spacing: 0.25rem;
+  
+  /* Shadows - Subtle, professional */
+  --shadow-xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
+  --shadow-sm: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 1px 2px -1px hsl(0 0% 0% / 0.1);
+  --shadow-md: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 2px 4px -1px hsl(0 0% 0% / 0.1);
+  --shadow-lg: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 4px 6px -1px hsl(0 0% 0% / 0.1);
+  --shadow-xl: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 8px 10px -1px hsl(0 0% 0% / 0.1);
+  --shadow-2xl: 0 1px 3px 0px hsl(0 0% 0% / 0.25);
+  
+  /* Transitions */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  
+  color-scheme: light;
+}
+
+/**
+ * DARK MODE
+ * Automatically applied when .dark class is present on root element
+ */
+.dark {
+  --background: 30 3% 12.8%;
+  --foreground: 60 2% 98.5%;
+  --card: 30 3% 10.2%;
+  --card-foreground: 60 2% 98.5%;
+  --popover: 30 3% 12.8%;
+  --popover-foreground: 60 2% 98.5%;
+  --primary: 60 2% 92.2%;
+  --primary-foreground: 30 3% 12.8%;
+  --secondary: 30 3% 16.9%;
+  --secondary-foreground: 60 2% 98.5%;
+  --muted: 30 3% 16.9%;
+  --muted-foreground: 30 3% 44.8%;
+  --accent: 30 3% 23.1%;
+  --accent-foreground: 60 2% 98.5%;
+  --destructive: 0 79% 63%;
+  --destructive-foreground: 60 2% 98.5%;
+  --border: 30 3% 16.9%;
+  --input: 30 3% 16.9%;
+  --ring: 30 3% 33.6%;
+  
+  color-scheme: dark;
+}
+
+/**
+ * ALTERNATIVE PALETTE SLOTS
+ * Uncomment and customize as needed for user-selectable themes
+ */
+
+/* Alternative palette slot 1 (e.g., "Ocean Blue") */
+/* :root[data-theme="ocean"] { ... } */
+
+/* Alternative palette slot 2 (e.g., "Forest Green") */
+/* :root[data-theme="forest"] { ... } */
+
+/**
+ * BASE LAYER STYLES
+ */
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+  }
+  
+  /* Typography baseline */
+  h1 {
+    @apply text-4xl font-bold tracking-tight;
+  }
+  
+  h2 {
+    @apply text-3xl font-bold tracking-tight;
+  }
+  
+  h3 {
+    @apply text-2xl font-semibold;
+  }
+  
+  h4 {
+    @apply text-xl font-semibold;
+  }
+  
+  h5 {
+    @apply text-lg font-semibold;
+  }
+  
+  h6 {
+    @apply text-base font-semibold;
+  }
+  
+  p {
+    @apply leading-relaxed;
+  }
+  
+  a {
+    @apply transition-colors duration-150;
+  }
+  
+  /* Focus visible for accessibility */
+  *:focus-visible {
+    @apply outline-2 outline-offset-2 outline-ring;
+  }
+  
+  /* Remove default button styling to make shadcn buttons work cleanly */
+  button {
+    @apply cursor-pointer;
+  }
+}
+
+/**
+ * COMPONENT LAYER
+ */
+@layer components {
+  /* Container with safe area support and responsive max-width */
+  .container {
+    @apply mx-auto w-full max-w-7xl px-4 py-0 md:px-8;
+  }
+  
+  /* Section wrapper with consistent vertical spacing */
+  .section {
+    @apply py-16 md:py-20 lg:py-24;
+  }
+  
+  /* Subtle background for alternating sections */
+  .section-alt {
+    @apply bg-muted/30;
+  }
+}
+
+/**
+ * UTILITIES LAYER
+ * Additional custom utilities for common patterns
+ */
+@layer utilities {
+  /* Smooth transitions for motion */
+  .transition-fast {
+    @apply transition-all duration-150;
+  }
+  
+  .transition-base {
+    @apply transition-all duration-200;
+  }
+  
+  .transition-slow {
+    @apply transition-all duration-300;
+  }
+  
+  /* Text balance for better typography */
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  /* Subtle accent underline for links */
+  .link-underline {
+    @apply relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-current after:transition-all after:duration-200 hover:after:w-full;
+  }
+  
+  /* Safe area padding helpers (for mobile notches, etc.) */
+  .pl-safe {
+    @apply pl-safe-left;
+  }
+  
+  .pr-safe {
+    @apply pr-safe-right;
+  }
+  
+  .pt-safe {
+    @apply pt-safe-top;
+  }
+  
+  .pb-safe {
+    @apply pb-safe-bottom;
+  }
+}
+
+/**
+ * ANIMATIONS
+ * Minimal, professional animations for user interactions
+ */
+@layer utilities {
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes fade-out {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+  
+  @keyframes slide-up {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes slide-down {
+    from {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    to {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+  }
+  
+  .animate-fade-in {
+    animation: fade-in 0.3s ease-out;
+  }
+  
+  .animate-slide-up {
+    animation: slide-up 0.3s ease-out;
+  }
+}

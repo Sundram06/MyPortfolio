@@ -1,0 +1,19 @@
+node_modules/
+dist/
+.vite/
+.env
+.env.local
+.env.*.local
+*.tsbuildinfo
+.DS_Store
+Thumbs.db
+*.log
+*.logx
+.vscode/
+.idea/
+
+# Documentation and references (keep out of production)
+references/
+BUILD_LOG.md
+REQUIREMENTS.md
+VISUAL_ENHANCEMENT_PLAN.md
