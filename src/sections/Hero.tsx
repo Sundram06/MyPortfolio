@@ -12,7 +12,7 @@ export function Hero() {
   return (
     <section
       id="hero"
-      className="section flex min-h-screen items-center justify-center"
+      className="hero-pattern section flex min-h-screen items-center justify-center"
     >
       <div className="container text-center">
         <h1 className="mb-4 text-5xl font-bold md:text-6xl">
@@ -38,9 +38,13 @@ export function Hero() {
           >
             View Projects
           </a>
-          <button className="inline-flex items-center justify-center rounded-lg border border-border px-8 py-3 font-semibold transition-colors hover:bg-muted">
+          <a
+            href="/Sundram_Gupta_Resume.pdf"
+            download="Sundram_Gupta_Resume.pdf"
+            className="inline-flex items-center justify-center rounded-lg border border-border px-8 py-3 font-semibold transition-colors hover:bg-muted"
+          >
             Download Resume
-          </button>
+          </a>
         </div>
       </div>
     </section>

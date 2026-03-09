@@ -24,7 +24,7 @@ const experiences: ExperienceItem[] = [
     position: 'Software Developer',
     duration: 'June 2022 - Present',
     location: 'Bengaluru, India',
-    logo: '/logos/edgeverve-placeholder.svg',
+    logo: '/logos/EdgeverveLogo.png',
     achievements: [
       'Developed backend APIs for loan modules (Schedule Balance, Salary Loans)',
       'Built Loan Summary Card component with reusable loan insights',
@@ -42,7 +42,7 @@ const experiences: ExperienceItem[] = [
     position: 'Associate Software Engineer',
     duration: 'Sep 2021 - May 2022',
     location: 'Remote',
-    logo: '/logos/xoriant-placeholder.svg',
+    logo: '/logos/XoriantLogo.png',
     achievements: [
       'Developed internal form builder for 4,000+ employees',
       'Optimized form creation process (60% generation time reduction)',
@@ -77,7 +77,7 @@ export function Experience() {
               <div className="flex items-start gap-4">
                 <img
                   src={exp.logo}
-                  alt={`${exp.company} placeholder logo`}
+                  alt={`${exp.company} logo`}
                   className="h-14 w-14 rounded-xl border border-border bg-muted/40 object-contain p-1"
                   loading="lazy"
                 />
