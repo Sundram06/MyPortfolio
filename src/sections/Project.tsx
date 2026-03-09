@@ -142,8 +142,8 @@ export function Project() {
                 'Clean React architecture with modern patterns (Redux, React Router, Tanstack Query)',
                 'RESTful API with proper error handling',
               ].map((feature, i) => (
-                <li key={i} className="flex gap-3">
-                  <span className="mt-1 flex-shrink-0 text-emerald-600 dark:text-emerald-400">✅</span>
+                <li key={i} className="flex items-start gap-3">
+                  <span className="flex-shrink-0 text-emerald-600 dark:text-emerald-400">✅</span>
                   <span>{feature}</span>
                 </li>
               ))}

@@ -47,7 +47,7 @@ export function Contact() {
               <a
                 key={method.label}
                 href={method.href}
-                className="flex items-start gap-4 rounded-lg border border-border/50 bg-card/40 p-4 shadow-[0_0_0_0_rgba(0,0,0,0)] transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/35 hover:bg-background hover:shadow-sm"
+                className="flex items-center gap-4 rounded-lg border border-border/50 bg-card/40 p-4 shadow-[0_0_0_0_rgba(0,0,0,0)] transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/35 hover:bg-background hover:shadow-sm"
               >
                 <span className="text-2xl">{method.icon}</span>
                 <div>
