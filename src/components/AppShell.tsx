@@ -91,10 +91,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
       {/* Footer */}
       <footer className="border-t border-border/40 bg-muted/30 py-8">
         <div className="container text-center text-sm text-muted-foreground">
-          <p>
-            © {new Date().getFullYear()} Sundram Gupta. Built with React, TypeScript, and
-            Tailwind CSS.
-          </p>
+          <p>© {new Date().getFullYear()} Sundram Gupta</p>
         </div>
       </footer>
     </div>
