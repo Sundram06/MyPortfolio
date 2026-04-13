@@ -27,6 +27,25 @@ const techIcons: Record<string, { icon: IconType; color: string }> = {
   Redux: { icon: SiRedux, color: 'text-purple-500' },
 }
 
+// --- 3D tilt helpers (to remove: delete cardRef, onTiltMove, onTiltLeave
+//     and the three props on the card div below) ---
+function onTiltMove(e: React.MouseEvent<HTMLDivElement>) {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+  const card = e.currentTarget
+  const { left, top, width, height } = card.getBoundingClientRect()
+  const x = (e.clientX - left) / width - 0.5
+  const y = (e.clientY - top) / height - 0.5
+  card.style.transition = 'transform 0.06s ease'
+  card.style.transform = `perspective(900px) rotateY(${x * 6}deg) rotateX(${-y * 6}deg)`
+}
+
+function onTiltLeave(e: React.MouseEvent<HTMLDivElement>) {
+  const card = e.currentTarget
+  card.style.transition = 'transform 0.55s cubic-bezier(0.23, 1, 0.32, 1)'
+  card.style.transform = 'perspective(900px) rotateY(0deg) rotateX(0deg)'
+}
+// --- end tilt helpers ---
+
 export function Project() {
   return (
     <section id="project" className="section section-alt" data-reveal>
@@ -38,8 +57,13 @@ export function Project() {
           </p>
         </div>
 
-        {/* VittNest Case Study Card */}
-        <div className="grid gap-8 rounded-xl border border-border bg-card p-8 md:grid-cols-2 card-glow reveal reveal-delay-2">
+        {/* VittNest Case Study Card — tilt: remove onMouseMove/onMouseLeave to disable */}
+        <div
+          onMouseMove={onTiltMove}
+          onMouseLeave={onTiltLeave}
+          className="grid gap-8 rounded-xl border border-border bg-card p-8 md:grid-cols-2 card-glow reveal reveal-delay-2"
+          style={{ transformStyle: 'preserve-3d', willChange: 'transform' }}
+        >
           {/* Left: Project Info */}
           <div className="space-y-6">
             <div>

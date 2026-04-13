@@ -50,6 +50,25 @@ const experiences: ExperienceItem[] = [
   },
 ]
 
+// --- tilt handlers (to remove: delete these two functions and the
+//     onMouseMove/onMouseLeave props on the card div in the map below) ---
+function onCardTilt(e: React.MouseEvent<HTMLDivElement>) {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+  const card = e.currentTarget
+  const { left, top, width, height } = card.getBoundingClientRect()
+  const x = (e.clientX - left) / width - 0.5
+  const y = (e.clientY - top) / height - 0.5
+  card.style.transition = 'transform 0.06s ease'
+  card.style.transform = `perspective(800px) rotateY(${x * 4}deg) rotateX(${-y * 4}deg)`
+}
+
+function onCardTiltReset(e: React.MouseEvent<HTMLDivElement>) {
+  const card = e.currentTarget
+  card.style.transition = 'transform 0.55s cubic-bezier(0.23, 1, 0.32, 1)'
+  card.style.transform = 'perspective(800px) rotateY(0deg) rotateX(0deg)'
+}
+// --- end tilt handlers ---
+
 export function Experience() {
   return (
     <section id="experience" className="section" data-reveal>
@@ -66,7 +85,10 @@ export function Experience() {
           {experiences.map((exp, idx) => (
             <div
               key={exp.id}
+              onMouseMove={onCardTilt}
+              onMouseLeave={onCardTiltReset}
               className={`relative space-y-4 rounded-lg border border-border bg-card p-6 card-glow reveal reveal-delay-${Math.min(idx + 2, 4)}`}
+              style={{ willChange: 'transform' }}
             >
               {/* Timeline marker (left side on larger screens) */}
               {idx !== experiences.length - 1 && (
