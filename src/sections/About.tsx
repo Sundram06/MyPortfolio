@@ -9,9 +9,9 @@
 
 export function About() {
   return (
-    <section id="about" className="section">
+    <section id="about" className="section" data-reveal>
       <div className="container max-w-3xl">
-        <div className="mb-12 space-y-2">
+        <div className="mb-12 space-y-2 reveal reveal-delay-1">
           <h2 className="text-3xl font-bold md:text-4xl">About My Approach</h2>
           <p className="text-muted-foreground">
             Engineering philosophy and what drives my work
@@ -21,7 +21,7 @@ export function About() {
         {/* Philosophy Content */}
         <div className="space-y-8">
           {/* Development Philosophy */}
-          <div className="space-y-4">
+          <div className="space-y-4 reveal reveal-delay-2">
             <h3 className="text-2xl font-semibold">Development Philosophy</h3>
             <p className="text-lg leading-relaxed text-muted-foreground">
               I believe good software comes from clarity and simplicity. My approach is to break
@@ -33,7 +33,7 @@ export function About() {
           </div>
 
           {/* Unique Value */}
-          <div className="space-y-4">
+          <div className="space-y-4 reveal reveal-delay-3">
             <h3 className="text-2xl font-semibold">What Sets Me Apart</h3>
             <p className="text-lg leading-relaxed text-muted-foreground">
               What sets me apart is my ability to think across the entire stack while maintaining
@@ -44,7 +44,7 @@ export function About() {
           </div>
 
           {/* Core Values */}
-          <div className="grid gap-4 sm:grid-cols-2">
+          <div className="grid gap-4 sm:grid-cols-2 reveal reveal-delay-4">
             {[
               {
                 title: 'Clean Architecture',
@@ -65,7 +65,7 @@ export function About() {
             ].map((value) => (
               <div
                 key={value.title}
-                className="rounded-lg border border-border bg-card p-4"
+                className="rounded-lg border border-border bg-card p-4 card-glow hover-elevate"
               >
                 <h4 className="font-semibold">{value.title}</h4>
                 <p className="mt-2 text-sm text-muted-foreground">{value.description}</p>

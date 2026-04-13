@@ -52,9 +52,9 @@ const experiences: ExperienceItem[] = [
 
 export function Experience() {
   return (
-    <section id="experience" className="section">
+    <section id="experience" className="section" data-reveal>
       <div className="container">
-        <div className="mb-12 space-y-2">
+        <div className="mb-12 space-y-2 reveal reveal-delay-1">
           <h2 className="text-3xl font-bold md:text-4xl">Work Experience</h2>
           <p className="text-muted-foreground">
             Professional background in full-stack development and enterprise systems
@@ -66,7 +66,7 @@ export function Experience() {
           {experiences.map((exp, idx) => (
             <div
               key={exp.id}
-              className="relative space-y-4 rounded-lg border border-border bg-card p-6"
+              className={`relative space-y-4 rounded-lg border border-border bg-card p-6 card-glow reveal reveal-delay-${Math.min(idx + 2, 4)}`}
             >
               {/* Timeline marker (left side on larger screens) */}
               {idx !== experiences.length - 1 && (

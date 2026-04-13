@@ -12,17 +12,18 @@ export function Hero() {
   return (
     <section
       id="hero"
-      className="hero-pattern section flex min-h-screen items-center justify-center"
+      className="hero-pattern section flex min-h-screen items-center justify-center overflow-hidden"
+      data-reveal
     >
       <div className="container text-center">
-        <h1 className="mb-4 text-5xl font-bold md:text-6xl">
+        <h1 className="mb-4 text-5xl font-bold md:text-6xl reveal reveal-delay-1">
           Sundram Gupta
         </h1>
-        <p className="mb-6 text-2xl font-semibold text-primary md:text-3xl">
+        <p className="mb-6 text-2xl font-semibold text-primary md:text-3xl reveal reveal-delay-2">
           Full-stack engineer building scalable web applications with React,
           Node.js, and modern web architecture.
         </p>
-        <p className="mx-auto mb-8 max-w-2xl text-lg text-muted-foreground">
+        <p className="mx-auto mb-8 max-w-2xl text-lg text-muted-foreground reveal reveal-delay-3">
           I am a full-stack software engineer focused on building scalable and
           reliable web applications using modern technologies like React and
           Node.js. I enjoy designing clean architectures, building intuitive
@@ -31,17 +32,17 @@ export function Hero() {
         </p>
 
         {/* CTAs */}
-        <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
+        <div className="flex flex-col gap-4 sm:flex-row sm:justify-center reveal reveal-delay-4">
           <a
             href="#project"
-            className="inline-flex items-center justify-center rounded-lg bg-primary px-8 py-3 font-semibold text-primary-foreground transition-colors hover:opacity-90"
+            className="btn-solid shadow-lg shadow-primary/10"
           >
             View Projects
           </a>
           <a
             href="/Sundram_Gupta_Resume.pdf"
             download="Sundram_Gupta_Resume.pdf"
-            className="inline-flex items-center justify-center rounded-lg border border-border px-8 py-3 font-semibold transition-colors hover:bg-muted"
+            className="btn-ghost"
           >
             Download Resume
           </a>

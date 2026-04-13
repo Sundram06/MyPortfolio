@@ -29,9 +29,9 @@ const techIcons: Record<string, { icon: IconType; color: string }> = {
 
 export function Project() {
   return (
-    <section id="project" className="section section-alt">
+    <section id="project" className="section section-alt" data-reveal>
       <div className="container">
-        <div className="mb-12 space-y-2">
+        <div className="mb-12 space-y-2 reveal reveal-delay-1">
           <h2 className="text-3xl font-bold md:text-4xl">Featured Project</h2>
           <p className="text-muted-foreground">
             Deep dive into one of my significant full-stack builds
@@ -39,7 +39,7 @@ export function Project() {
         </div>
 
         {/* VittNest Case Study Card */}
-        <div className="grid gap-8 rounded-xl border border-border bg-card p-8 md:grid-cols-2">
+        <div className="grid gap-8 rounded-xl border border-border bg-card p-8 md:grid-cols-2 card-glow reveal reveal-delay-2">
           {/* Left: Project Info */}
           <div className="space-y-6">
             <div>
@@ -88,7 +88,7 @@ export function Project() {
                   return (
                     <span
                       key={tech}
-                      className="inline-flex items-center gap-1.5 rounded-full bg-muted px-3 py-1 text-sm font-medium"
+                      className="inline-flex items-center gap-1.5 rounded-full bg-muted px-3 py-1 text-sm font-medium transition duration-200 hover:bg-primary/10 hover:text-primary"
                     >
                       {techConfig ? (
                         (() => {
@@ -114,7 +114,7 @@ export function Project() {
                 href="https://vittnest.onrender.com/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2 font-semibold text-primary-foreground transition-colors hover:opacity-90"
+                className="btn-solid"
               >
                 View Live →
               </a>
@@ -122,7 +122,7 @@ export function Project() {
                 href="https://github.com/Sundram06/stockManager"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-lg border border-border px-4 py-2 font-semibold transition-colors hover:bg-muted"
+                className="btn-ghost"
               >
                 GitHub Repo →
               </a>

@@ -124,9 +124,9 @@ const skillCategories: SkillCategory[] = [
 
 export function Skills() {
   return (
-    <section id="skills" className="section section-alt">
+    <section id="skills" className="section section-alt" data-reveal>
       <div className="container">
-        <div className="mb-12 space-y-2">
+        <div className="mb-12 space-y-2 reveal reveal-delay-1">
           <h2 className="text-3xl font-bold md:text-4xl">Technical Skills</h2>
           <p className="text-muted-foreground">
             Technologies and tools I work with daily
@@ -135,17 +135,17 @@ export function Skills() {
 
         {/* Skills Grid */}
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {skillCategories.map((category) => (
+          {skillCategories.map((category, idx) => (
             <div
               key={category.name}
-              className="rounded-lg border border-border bg-card p-6"
+              className={`rounded-lg border border-border bg-card p-6 card-glow reveal reveal-delay-${Math.min(idx + 2, 4)}`}
             >
               <h3 className="mb-4 font-semibold">{category.name}</h3>
               <div className="flex flex-wrap gap-2">
                 {category.skills.map((skill) => (
                   <span
                     key={skill}
-                    className="inline-flex items-center gap-2 rounded-full bg-muted px-3 py-1 text-sm font-medium"
+                    className="inline-flex items-center gap-2 rounded-full bg-muted px-3 py-1 text-sm font-medium transition duration-200 hover:bg-primary/10 hover:text-primary"
                   >
                     {skillIcons[skill] ? (
                       (() => {
